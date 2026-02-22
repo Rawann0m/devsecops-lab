@@ -15,11 +15,21 @@ jobs:
 
       - name: Show Python version
         run: python3 --version
+
       - name: Install dependencies
         run: pip install pytest
 
+      - name: Install Dev Tools
+        run: pip install pytest flake8 bandit
+        
       - name: Run tests
         run: pytest
+
+      - name: Run Lint
+        run: flake8 .
+
+      - name: Run Security Scan
+        run: bandit -r .
 
       - name: Test pipeline
         run: echo "Pipeline is working "
